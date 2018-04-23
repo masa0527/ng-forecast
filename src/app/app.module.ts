@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import  {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatToolbarModule,
@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AreaEditComponent } from './area-edit/area-edit.component';
 import { ForecastComponent } from './forecast/forecast.component';
+import { OpenWeatherMapService } from './services/open-weather-map.service';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { ForecastComponent } from './forecast/forecast.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
 
     BrowserAnimationsModule,
@@ -42,7 +43,9 @@ import { ForecastComponent } from './forecast/forecast.component';
     MatCardModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    OpenWeatherMapService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
