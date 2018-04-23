@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import  {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatToolbarModule,
@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { AreaEditComponent } from './area-edit/area-edit.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
+import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { OpenWeatherMapService } from './services/open-weather-map.service';
     AppComponent,
     HomeComponent,
     AreaEditComponent,
-    ForecastComponent
+    ForecastComponent,
+    UnixTimeDatePipe
   ],
   imports: [
     BrowserModule,
