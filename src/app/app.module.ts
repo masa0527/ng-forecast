@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatToolbarModule,
@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { AreaEditComponent } from './area-edit/area-edit.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
+import { LoadingInterceptor } from './loading-interceptor';
+import { LoadingService } from './services/loading.service';
 import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
 
 
@@ -46,7 +48,13 @@ import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
     MatInputModule
   ],
   providers: [
-    OpenWeatherMapService
+    OpenWeatherMapService,
+    LoadingService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
