@@ -9,7 +9,24 @@ export declare namespace OpenWeatherMap {
     name: string;
     coord: Coord;
     country: string;
-    population: number;
+    cod: string;
+    message: number;
+    cnt: number;
+    list: List[];
+  }
+
+  export interface List {
+    dt: number;
+    main: Main;
+    weather: Weather[];
+    clouds: Clouds;
+    wind: Wind;
+    sys: Pod;
+    dt_txt: string;
+  }
+
+  export interface Pod {
+    pod: string;
   }
 
   export interface Temp {
@@ -30,10 +47,13 @@ export declare namespace OpenWeatherMap {
 
   export interface Main {
     temp: number;
-    pressure: number;
-    humidity: number;
     temp_min: number;
     temp_max: number;
+    pressure: number;
+    sea_level: number;
+    grnd_level: number;
+    humidity: number;
+    temp_kf: number;
   }
 
   export interface Wind {
@@ -86,5 +106,9 @@ export declare namespace OpenWeatherMap {
     id: number;
     name: string;
     cod: number;
+  }
+
+  export interface Forecast5day {
+    city: City;
   }
 }

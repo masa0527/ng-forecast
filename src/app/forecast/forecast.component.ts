@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OpenWeatherMap } from '../shared/models/open-weather-map';
+import { OpenWeatherMapService } from '../services/open-weather-map.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
-import { OpenWeatherMap } from '../shared/models/open-weather-map';
-import { ActivatedRoute } from '@angular/router';
-import { OpenWeatherMapService } from '../services/open-weather-map.service';
 
 @Component({
   selector: 'app-forecast',
@@ -12,6 +12,7 @@ import { OpenWeatherMapService } from '../services/open-weather-map.service';
 })
 export class ForecastComponent implements OnInit {
   public currentWeatherObservable: Observable<OpenWeatherMap.Current>;
+  public forecastObservable: Observable<OpenWeatherMap.Forecast5day>;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,11 @@ export class ForecastComponent implements OnInit {
       this.route.params.switchMap((param: { city: string }) => {
         return this.openWeatherMapService.current(param.city);
       });
+
+    // 一週間の天気予報を取得
+    this.forecastObservable = this.route.params.switchMap(param => {
+      return this.openWeatherMapService.forecast(param['city']);
+    });
   }
 
 }

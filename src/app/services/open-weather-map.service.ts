@@ -31,19 +31,17 @@ export class OpenWeatherMapService {
     return this.http.get<OpenWeatherMap.Current>(`${this.API}/weather`, {params});
   }
 
-  forecast(city: string): Observable<OpenWeatherMap.Forecast> {
+  forecast(city: string): Observable<OpenWeatherMap.Forecast5day> {
     let params: HttpParams = new HttpParams();
     const data = {
       appid: this.API_ID,
       units: 'metric',
       lang: 'jp',
-      cnt: 7,
       q: city
     };
     Object.keys(data).forEach((key) => {
-      params = params.set(key, data[key]);
+      params = params.append(key, data[key]);
     });
-    return this.http.get<OpenWeatherMap.Forecast>(`${this.API}/forecast/daily`, {params});
+    return this.http.get<OpenWeatherMap.Forecast>(`${this.API}/forecast`, {params});
   }
-
 }
