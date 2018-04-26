@@ -1,3 +1,25 @@
-<p>
-  area-edit works!
-</p>
+<form (submit)="save($event)">
+  <mat-list>
+    <mat-list-item *ngFor="let area of areas; let i = index">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput type="text" placeholder="表示名" [(ngModel)]="area.label" [name]="'label-' + i ">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput type="text" placeholder="都市名(例：tokyo)" [(ngModel)]="area.city" [name]="'city-' + i">
+            </mat-form-field>
+          </td>
+          <td>
+            <button type="button" mat-raised-button color="warn" (click)="delete(area, i)" [style.margin-left]="'5px'">削除</button>
+          </td>
+        </tr>
+      </table>
+    </mat-list-item>
+  </mat-list>
+  <button type="button" mat-raised-button color="accent" (click)="addArea()">追加</button>
+  <button type="submit" mat-raised-button color="primary">保存</button>
+</form>
