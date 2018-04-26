@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { AreaEditComponent } from './area-edit/area-edit.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
+import { AreaService } from './services/area.service';
 import { LoadingInterceptor } from './loading-interceptor';
 import { LoadingService } from './services/loading.service';
 import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
@@ -50,6 +51,7 @@ import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
   providers: [
     OpenWeatherMapService,
     LoadingService,
+    AreaService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
