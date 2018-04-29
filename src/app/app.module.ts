@@ -13,7 +13,6 @@ import {
   MatInputModule
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AreaEditComponent } from './area-edit/area-edit.component';
@@ -23,7 +22,7 @@ import { AreaService } from './services/area.service';
 import { LoadingInterceptor } from './loading-interceptor';
 import { LoadingService } from './services/loading.service';
 import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,8 @@ import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    ChartsModule
   ],
   providers: [
     OpenWeatherMapService,

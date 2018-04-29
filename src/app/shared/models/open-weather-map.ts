@@ -109,6 +109,13 @@ export declare namespace OpenWeatherMap {
   }
 
   export interface Forecast5day {
-    city: City;
+    id: number;
+    name: string;
+    coord: Coord;
+    country: string;
+    cod: string;
+    message: number;
+    cnt: number;
+    list: List[];
   }
 }

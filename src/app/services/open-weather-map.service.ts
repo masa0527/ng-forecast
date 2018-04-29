@@ -31,6 +31,11 @@ export class OpenWeatherMapService {
     return this.http.get<OpenWeatherMap.Current>(`${this.API}/weather`, {params});
   }
 
+  /**
+   * 5日間の天気取得
+   * @param {string} city
+   * @returns {Observable<OpenWeatherMap.Forecast5day>}
+   */
   forecast(city: string): Observable<OpenWeatherMap.Forecast5day> {
     let params: HttpParams = new HttpParams();
     const data = {
@@ -42,6 +47,6 @@ export class OpenWeatherMapService {
     Object.keys(data).forEach((key) => {
       params = params.append(key, data[key]);
     });
-    return this.http.get<OpenWeatherMap.Forecast>(`${this.API}/forecast`, {params});
+    return this.http.get<OpenWeatherMap.Forecast5day>(`${this.API}/forecast`, {params});
   }
 }

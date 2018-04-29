@@ -36,7 +36,13 @@
   </mat-card>
 </div>
 <div *ngIf="(forecastObservable | async) as forecast">
-  <mat-list>
+  <canvas baseChart width="400" height="150"
+  [datasets]="lineChartData"
+  [labels]="lineChartLabels"
+  [options]="{responsive: true}"
+  [legend]="true"
+  chartType="line"></canvas>
+  <mat-list [@slideFade]="forecast.list">
     <mat-list-item *ngFor="let weather of forecast.list" class="mat-elevation-z1">
       <img matListAvatar
            src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png"

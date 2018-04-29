@@ -1,6 +1,6 @@
 <form (submit)="save($event)">
   <mat-list>
-    <mat-list-item *ngFor="let area of areas; let i = index">
+    <mat-list-item @slideFade *ngFor="let area of areas; let i = index">
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
